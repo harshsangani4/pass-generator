@@ -27,8 +27,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ThemeInit />
         {children}
       </body>
     </html>
+  );
+}
+
+function ThemeInit() {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `try{var p=localStorage.getItem('theme');if(p==='dark'){document.documentElement.classList.add('dark');}}catch(e){}`,
+      }}
+    />
   );
 }
